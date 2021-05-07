@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Table</title>
+    <th:block th:replace="back-end/layout/link::linkHeader">
+    </th:block>
+</head>
+<body>
+
+<div class="page-wrapper">
+    <!-- HEADER MOBILE-->
+    <th:block th:replace="back-end/layout/header-mobile::headerMobile">
+    </th:block>
+    <!-- END HEADER MOBILE-->
+
+    <!-- MENU SIDEBAR-->
+    <th:block th:replace="back-end/layout/side-bar::sideBar">
+    </th:block>
+    <!-- END MENU SIDEBAR-->
+
+    <!-- PAGE CONTAINER-->
+    <div class="page-container">
+        <!-- HEADER DESKTOP-->
+        <th:block th:replace="back-end/layout/header::headerDesktop">
+        </th:block>
+        <!-- END HEADER DESKTOP-->
+
+        <!-- MAIN CONTENT-->
+        <div class="main-content">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="ml-3 mb-4">
+                            <a type="reset" class="btn btn-primary" th:href="@{/user}">Back
+                            </a>
+                        </div>
+                        <div class="col-md-12">
+                            <!-- DATA TABLE -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Edit Form</strong> User
+                                </div>
+                                <form th:action="@{/user/update}" enctype="multipart/form-data" th:object="${user}"
+                                      method="post"
+                                      class="form-horizontal">
+                                    <div class="card-body card-block">
+                                        <input type="hidden" th:field="*{id}">
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="email-input" class=" form-control-label">Email
+                                                    User</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="email" id="email-input"
+                                                       placeholder="Email" class="form-control"
+                                                       th:field="*{email}">
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="pass-input" class=" form-control-label">Password
+                                                    User</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="password" id="pass-input"
+                                                       placeholder="insert new password" class="form-control"
+                                                       th:field="*{password}">
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="text-input" class=" form-control-label">Name
+                                                    User</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="text-input"
+                                                       placeholder="Name user" class="form-control"
+                                                       th:field="*{fullName}">
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="role-input" class=" form-control-label">Role
+                                                    User</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <select type="text" id="role-input"
+                                                        class="form-control"
+                                                        th:field="*{role}">
+                                                    <option th:value="admin">Admin</option>
+                                                    <option th:value="user">User</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">image</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="hidden" th:field="*{imageUrl}"
+                                                       placeholder="Name"
+                                                       class="form-control">
+                                                <input type="file" th:field="*{image}"
+                                                       placeholder="Name"
+                                                       class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="description-input"
+                                                       class=" form-control-label">Description</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="description-input"
+                                                       placeholder="Enter desciption" class="form-control"
+                                                       th:field="*{description}">
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="about-input"
+                                                       class=" form-control-label">About me</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="about-input"
+                                                       placeholder="Enter desciption" class="form-control"
+                                                       th:field="*{about}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary btn-sm" value="Submit">
+                                            <i class="fa fa-dot-circle-o"></i> Submit
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- END DATA TABLE -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<th:block th:replace="back-end/layout/link::script">
+
+</th:block>
+</body>
+</html>

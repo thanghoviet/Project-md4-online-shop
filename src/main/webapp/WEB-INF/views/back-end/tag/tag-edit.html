@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>tag Table</title>
+    <th:block th:replace="back-end/layout/link::linkHeader">
+    </th:block>
+</head>
+<body>
+
+<div class="page-wrapper">
+    <!-- HEADER MOBILE-->
+    <th:block th:replace="back-end/layout/header-mobile::headerMobile">
+    </th:block>
+    <!-- END HEADER MOBILE-->
+
+    <!-- MENU SIDEBAR-->
+    <th:block th:replace="back-end/layout/side-bar::sideBar">
+    </th:block>
+    <!-- END MENU SIDEBAR-->
+
+    <!-- PAGE CONTAINER-->
+    <div class="page-container">
+        <!-- HEADER DESKTOP-->
+        <th:block th:replace="back-end/layout/header::headerDesktop">
+        </th:block>
+        <!-- END HEADER DESKTOP-->
+
+        <!-- MAIN CONTENT-->
+        <div class="main-content">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="ml-3 mb-4">
+                            <a type="reset" class="btn btn-primary" th:href="@{/tag}">Back
+                            </a>
+                        </div>
+                        <div class="col-md-12">
+                            <!-- DATA TABLE -->
+                            <!--                            <div class="col-lg-6">-->
+                            <div class="card">
+                                <form th:action="@{/tag/update}" th:object="${tag}" method="post"
+                                      class="form-horizontal">
+                                    <div class="card-header">
+                                        <strong>Edit </strong> tag
+                                    </div>
+                                    <div class="card-body card-block">
+                                        <input type="hidden" th:field="*{id}">
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="text-input" class=" form-control-label">Name
+                                                    tag</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="text-input"
+                                                       placeholder="Name tag" class="form-control"
+                                                       th:field="*{name}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary btn-sm" value="Submit">
+                                            <i class="fa fa-dot-circle-o"></i> Submit
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- END DATA TABLE -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<th:block th:replace="back-end/layout/link::script">
+
+</th:block>
+</body>
+</html>

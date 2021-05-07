@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>customer Table</title>
+    <th:block th:replace="back-end/layout/link::linkHeader">
+    </th:block>
+</head>
+<body>
+
+<div class="page-wrapper">
+    <!-- HEADER MOBILE-->
+    <th:block th:replace="back-end/layout/header-mobile::headerMobile">
+    </th:block>
+    <!-- END HEADER MOBILE-->
+
+    <!-- MENU SIDEBAR-->
+    <th:block th:replace="back-end/layout/side-bar::sideBar">
+    </th:block>
+    <!-- END MENU SIDEBAR-->
+
+    <!-- PAGE CONTAINER-->
+    <div class="page-container">
+        <!-- HEADER DESKTOP-->
+        <th:block th:replace="back-end/layout/header::headerDesktop">
+        </th:block>
+        <!-- END HEADER DESKTOP-->
+
+        <!-- MAIN CONTENT-->
+        <div class="main-content">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="ml-3 mb-4">
+                            <a class="btn btn-primary" th:href="@{/order}">Back
+                            </a>
+                        </div>
+                        <div class="col-md-12">
+                            <!-- DATA TABLE -->
+                            <div class="card">
+                                <form th:action="@{/order/update}" th:object="${order}" method="post"
+                                      class="form-horizontal">
+                                    <div class="card-header">
+                                        <strong>Edit</strong> order
+                                    </div>
+                                    <div class="card-body card-block">
+                                        <!--<div th:if="${mess}">-->
+                                        <!--    <h3 th:text="${mess}"></h3>-->
+                                        <!--</div>-->
+                                        <input type="hidden" th:field="*{id}">
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">Address 1 : </label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="address1"
+                                                       placeholder="Address 1 :" class="form-control"
+                                                       th:field="*{address1}">
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">Address 2 :</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="address2"
+                                                       placeholder="Address 2" class="form-control"
+                                                       th:field="*{address2}">
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">city</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <select type="text"
+                                                        class="form-control" th:field="*{province.id}" id="city">
+                                                    <option th:each="pro: ${provinces}" th:value="${pro.id}"
+                                                            th:text="${pro.name}"></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">Company Name </label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="companyName"
+                                                       placeholder="Company Name " class="form-control"
+                                                       th:field="*{companyName}">
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">email</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="email" id="email"
+                                                       placeholder="email" class="form-control"
+                                                       th:field="*{email}">
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">full Name</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="firstName"
+                                                       placeholder="first Name" class="form-control"
+                                                       th:field="*{fullName}">
+                                            </div>
+                                        </div>
+
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">Note</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <textarea id="note"
+                                                          class="form-control" th:field="*{note}"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">Payment
+                                                    Method</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <select th:field="${order.paymentMethod}" id="paymentMethod" class="form-control">
+                                                    <option th:value="'Cash on delivery'" th:text="'Cash on delivery'"></option>
+                                                    <option th:value="'Internet Banking'" th:text="'Internet Banking'"></option>
+                                                    <option th:value="'Debit Card/Credit Card'" th:text="'Debit Card/Credit Card'"></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">phone</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="number" id="phone"
+                                                       placeholder="phone" class="form-control"
+                                                       th:field="*{phone}">
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">status</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <select th:field="${order.status}" class="form-control">
+                                                    <option th:value="1">Đã đặt, đang chờ xác nhận</option>
+                                                    <option th:value="2">Xác nhận thành công, chờ nhận hàng</option>
+                                                    <option th:value="3">Đã hủy</option>
+                                                    <option th:value="4">Giao hàng thành công</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary btn-sm" value="Submit">
+                                            <i class="fa fa-dot-circle-o"></i> Submit
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!--                            </div>-->
+                            <!-- END DATA TABLE -->
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <p>
+                                    Copyright © 2018 Colorlib. All rights reserved. Template
+                                    by <a href="../bootstrap/https://colorlib.com">Colorlib</a>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<th:block th:replace="back-end/layout/link::script">
+
+</th:block>
+</body>
+</html>

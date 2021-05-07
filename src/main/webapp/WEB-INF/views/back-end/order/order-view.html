@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>order Table</title>
+    <th:block th:replace="back-end/layout/link::linkHeader">
+    </th:block>
+</head>
+<body>
+
+<div class="page-wrapper">
+    <!-- HEADER MOBILE-->
+    <th:block th:replace="back-end/layout/header-mobile::headerMobile">
+    </th:block>
+    <!-- END HEADER MOBILE-->
+
+    <!-- MENU SIDEBAR-->
+    <th:block th:replace="back-end/layout/side-bar::sideBar">
+    </th:block>
+    <!-- END MENU SIDEBAR-->
+
+    <!-- PAGE CONTAINER-->
+    <div class="page-container">
+        <!-- HEADER DESKTOP-->
+        <th:block th:replace="back-end/layout/header::headerDesktop">
+        </th:block>
+        <!-- END HEADER DESKTOP-->
+
+        <!-- MAIN CONTENT-->
+        <div class="main-content">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="ml-3 mb-4">
+                            <a class="btn btn-primary" th:href="@{/order}">Back
+                            </a>
+                        </div>
+                        <div class="col-md-12">
+                            <!-- DATA TABLE -->
+                            <div class="card">
+                                <form th:object="${viewOrder}"
+                                      class="form-horizontal">
+                                    <div class="card-header">
+                                        <strong>View</strong> Order
+                                    </div>
+                                    <div class="card-body card-block">
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">ID</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div id="id-input"
+                                                     th:text="*{id}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">createDate</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div th:text="*{createDate}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">doneTime</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div th:text="*{doneTime}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">paymentMethod</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div th:text="*{paymentMethod}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">status</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div th:text="*{status}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">fullName</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div th:text="*{fullName}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">companyName</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div th:text="*{companyName}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">address1</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div th:text="*{address1}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">address2</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div th:text="*{address2}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">email</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div th:text="*{email}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">phone</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div th:text="*{phone}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">province</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div th:text="*{province.name}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">totalPrice</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div th:text="*{totalPrice}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label
+                                                        class=" form-control-label">note</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <textarea th:text="*{note}" rows="7"
+                                                          class="form-control bg-light" disabled></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <h3 class="title-5 m-b-35">list order product</h3>
+                                            <div class="table-responsive table-responsive-data2">
+                                                <table class="table table-data2">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Product</th>
+                                                        <th>Quantity</th>
+                                                        <th>Price</th>
+                                                        <th>Total</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr class="tr-shadow" th:each="orderdt : ${viewOrder.getOrderDetails()}">
+                                                        <td th:text="${orderdt.id}"></td>
+                                                        <td th:text="${orderdt.product.nameProduct}"></td>
+                                                        <td th:text="${orderdt.quantity}"></td>
+                                                        <td th:text="${orderdt.product.price}"></td>
+                                                        <td th:text="${orderdt.product.price * orderdt.quantity}"></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a class="btn btn-primary" th:href="@{/order}">Back
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- END DATA TABLE -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<th:block th:replace="back-end/layout/link::script">
+
+</th:block>
+</body>
+</html>

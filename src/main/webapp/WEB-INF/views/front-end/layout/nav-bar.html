@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block th:fragment="nav-bar">
+    <!-- Header
+    ============================================= -->
+    <header id="header" class="full-header">
+        <div id="header-wrap">
+            <div class="container clearfix">
+                <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+                <!-- Logo
+                ============================================= -->
+                <div id="logo">
+                    <a th:href="@{/index}" class="standard-logo" data-dark-logo="images/logo-dark.png"><img
+                            src="/assets/front-end/images/logo.png" alt="Canvas Logo"></a>
+                    <a th:href="@{/index}" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img
+                            src="/assets/front-end/images/logo@2x.png" alt="Canvas Logo"></a>
+                </div><!-- #logo end -->
+                <!-- Primary Navigation
+                ============================================= -->
+                <nav id="primary-menu">
+                    <ul>
+                        <li class="current"><a th:href="@{/index}">
+                            <div>Home</div>
+                            <span>Lets Start</span></a>
+                        </li>
+                        <!-- Mega Menu
+                        ============================================= -->
+                        <li><a th:href="@{/shop}">
+                            <div>Women</div>
+                            <span>Awesome Works</span></a>
+                            <div class="mega-menu-content style-2 clearfix" style="max-width: 200px">
+                                <ul class="mega-menu-column col-md-12">
+                                    <li class="mega-menu-title">
+                                        <ul>
+                                            <th:block th:each="cate : ${findAllCategories}">
+                                                <li><a th:href="@{/shop/category/{id}(id = ${cate.id})}">
+                                                    <div th:text="${cate.name}"></div>
+                                                </a></li>
+                                            </th:block>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a th:href="@{/shop}">
+                                <div>Men</div>
+                                <span>Out of the Box</span></a>
+                            <div class="mega-menu-content style-2 clearfix" style="max-width: 200px">
+                                <ul class="mega-menu-column col-md-12">
+                                    <li class="mega-menu-title">
+                                        <ul>
+                                            <th:block th:each="cate : ${findAllCategories}">
+                                                <li><a th:href="@{/shop/category/{id}(id = ${cate.id})}">
+                                                    <div th:text="${cate.name}"></div>
+                                                </a></li>
+                                            </th:block>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li><!-- .mega-menu end -->
+                        <li><a th:href="@{/shop}">
+                            <div>Category</div>
+                            <span>Out of the Box</span></a>
+                            <div class="mega-menu-content style-2 clearfix" style="max-width: 200px">
+                                <ul class="mega-menu-column col-md-12">
+                                    <li class="mega-menu-title">
+                                        <ul>
+                                            <th:block th:each="cate : ${findAllCategories}">
+                                                <li><a th:href="@{/shop/category/{id}(id = ${cate.id})}">
+                                                    <div th:text="${cate.name}"></div>
+                                                </a></li>
+                                            </th:block>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a th:href="@{/cart/showCart}">Cart</a>
+                        </li>
+                        <!-- .mega-menu end -->
+                    </ul>
+                    <!-- Top Cart
+                    ============================================= -->
+                    <div id="top-cart">
+                        <a href="#" id="top-cart-trigger"><i class="icon-shopping-cart"></i>
+
+                            <th:block th:if="${session.order}">
+                                <span th:text="${session.order.orderDetails.size()}"></span>
+                            </th:block>
+                            <th:block th:unless="${session.order}">
+                                <span th:text="'0'"></span>
+                            </th:block>
+                        </a>
+                        <th:block th:if="${session.order!=null}">
+                            <div class="top-cart-content">
+                                <div class="top-cart-title">
+                                    <h4>Shopping Cart</h4>
+                                </div>
+                                <div class="top-cart-items">
+                                    <div class="top-cart-item clearfix" th:each="cart: ${session.order.orderDetails}">
+                                        <div class="top-cart-item-image">
+                                            <a href="#"><img th:src="${cart.product.image}"
+                                                             th:alt="${cart.product.nameProduct}"/></a>
+                                        </div>
+                                        <div class="top-cart-item-desc">
+                                            <a href="#" th:text="${cart.product.nameProduct}"></a>
+                                            <span class="top-cart-item-price" th:text="${cart.product.price}"></span>
+                                            <span class="top-cart-item-quantity"
+                                                  th:text="'x '+ ${cart.quantity}"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="top-cart-action clearfix">
+                                    <span class="fleft top-checkout-price" th:text="${session.order.totalPrice}"></span>
+                                    <a th:href="@{/cart/showCart}"
+                                       class="button button-3d button-small nomargin fright">View Cart</a>
+                                </div>
+                            </div>
+                        </th:block>
+                    </div>
+                    <!-- #top-cart end -->
+                    <!-- Top Search
+                    ============================================= -->
+                    <div id="top-search">
+                        <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
+                        <form th:action="@{/index/search}" method="get">
+                            <input type="text" name="keyword" class="form-control" value=""
+                                   placeholder="Search for name product...">
+                        </form>
+                    </div><!-- #top-search end -->
+                </nav><!-- #primary-menu end -->
+            </div>
+        </div>
+    </header><!-- #header end -->
+</th:block>
+</body>
+</html>
